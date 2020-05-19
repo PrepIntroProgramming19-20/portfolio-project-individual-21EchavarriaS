@@ -1,3 +1,4 @@
+//old original planet class from the original assignment
 public class OriginalPlanet {
     private double mass; //in kg 
     private int radius; //in meters

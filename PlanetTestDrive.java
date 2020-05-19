@@ -1,3 +1,4 @@
+//old test drive class 
 public class PlanetTestDrive {
     public static void main(String args[]) {
         OriginalPlanet Neptune = new OriginalPlanet(); //creates the planet object
