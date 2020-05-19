@@ -2,11 +2,7 @@ public class OriginalPlanet {
     private double mass; //in kg 
     private int radius; //in meters
        public void setMass(double newMass) {
-           if(newMass <= .2 * 1e+24 ) { // .330 is the mass of mercury so if it's smaller than this it will print that it's too small
-              System.out.println("You cannot have a negative, 0 or small mass");
-           }else {
-              mass = newMass; // using this website for mass and radius of planets in our solar system: https://nssdc.gsfc.nasa.gov/planetary/factsheet/
-        }
+           mass = newMass; // using this website for mass and radius of planets in our solar system: https://nssdc.gsfc.nasa.gov/planetary/factsheet/
     }
     public double getMass() {
             return mass; //so after you set the mass you can find it again

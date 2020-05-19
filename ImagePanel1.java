@@ -31,6 +31,7 @@ public class ImagePanel1 extends JPanel
             ring = false;
         }
     }
+    
     public void chooseMass(double size){
         if(size == 0.33){
             mass = 100;

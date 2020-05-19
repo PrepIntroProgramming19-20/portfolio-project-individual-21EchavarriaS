@@ -42,10 +42,9 @@
         JRadioButton moon2 = new JRadioButton("two");
         JRadioButton moon3 = new JRadioButton("five");
         
-        //a reset button that resets all the images 
-        JButton reset = new JButton("Choose this button to reset your planet");
         //label with the surface gravity that changes if mass or radius are changed
-        JLabel gravity = new JLabel("Change this value");
+        OriginalPlanet gravity = new OriginalPlanet();
+        JLabel gravityLabel = new JLabel("");
         public PlanetGUI(){
             //frame and panels added to the frame using boxlayout
             frame.setSize(800,800);
@@ -62,11 +61,11 @@
             
             BoxLayout buttonLayout = new BoxLayout(buttonPanel, BoxLayout.Y_AXIS);
             buttonPanel.setLayout(buttonLayout);
-            //colorPanel.setPreferredSize(new Dimension(400, 160));
             buttonPanel.add(colorPanel);
             buttonPanel.add(ringsPanel);
             buttonPanel.add(massPanel);
             buttonPanel.add(moonPanel);
+            buttonPanel.add(gravityLabel);
             
             BoxLayout colorLayout = new BoxLayout(colorPanel, BoxLayout.X_AXIS);
             colorPanel.setLayout(colorLayout);
@@ -126,6 +125,10 @@
             massButton.addActionListener(new ButtonListen3());
             moonButton.addActionListener(new ButtonListen4());
             
+            gravity.setMass(5.97);
+            gravity.setRadius(6378);
+            gravityLabel.setText("Surface Gravity: " + gravity.getSurfGrav() + "kg/km²");
+            
             panel.setVisible(true);
             frame.setVisible(true);
         }
@@ -182,10 +185,19 @@
             try{
                 if(massGroup.getSelection().getActionCommand()== "0.33"){
                     planet.chooseMass(0.33);
+                    gravity.setMass(0.33);
+                    gravity.setRadius(2440);
+                    gravityLabel.setText("Surface Gravity:" + gravity.getSurfGrav() + "kg/km²");
                 }else if(massGroup.getSelection().getActionCommand() == "5.97"){
                     planet.chooseMass(5.97);
+                    gravity.setMass(5.97);
+                    gravity.setRadius(6378);
+                    gravityLabel.setText("Surface Gravity: " + gravity.getSurfGrav() + "kg/km²");
                 }else if(massGroup.getSelection().getActionCommand() == "568"){
                     planet.chooseMass(568);
+                    gravity.setMass(568);
+                    gravity.setRadius(60268);
+                    gravityLabel.setText("Surface Gravity:" + gravity.getSurfGrav() + "kg/km²");
                 }
                 planet.repaint();
                 panel.setVisible(true);
