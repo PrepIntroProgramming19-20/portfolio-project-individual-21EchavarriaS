@@ -138,11 +138,17 @@
             public void actionPerformed(ActionEvent event) throws NullPointerException{
                 try{
                     if(colorGroup.getSelection().getActionCommand()== "blue"){
-                        planet.addColor(200, 50, 2);
+                        int blue = (int)(Math.random() * 255);
+                        int green = (int)(Math.random() * 20);
+                        planet.addColor(blue, green, 2);
                     }else if(colorGroup.getSelection().getActionCommand() == "red"){
-                        planet.addColor(20, 2, 200);
+                        int red = (int)(Math.random() * 255);
+                        int blue = (int)(Math.random() * 20);
+                        planet.addColor(blue, 2, red);
                     }else if(colorGroup.getSelection().getActionCommand() == "green"){
-                        planet.addColor(20, 200, 2);
+                        int green = (int)(Math.random() * 255);
+                        int blue = (int)(Math.random() * 20);
+                        planet.addColor(blue, green, 2);
                     }
                     planet.repaint();
                     panel.repaint();
@@ -173,7 +179,20 @@
     
     class ButtonListen3 implements ActionListener{
         public void actionPerformed(ActionEvent event){
+            try{
+                if(massGroup.getSelection().getActionCommand()== "0.33"){
+                    planet.chooseMass(0.33);
+                }else if(massGroup.getSelection().getActionCommand() == "5.97"){
+                    planet.chooseMass(5.97);
+                }else if(massGroup.getSelection().getActionCommand() == "568"){
+                    planet.chooseMass(568);
+                }
+                planet.repaint();
+                panel.setVisible(true);
+                frame.repaint(); 
+            }catch(NullPointerException e){
         
+            }
         }
     }
      

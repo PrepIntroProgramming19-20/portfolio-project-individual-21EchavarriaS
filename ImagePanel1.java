@@ -8,9 +8,13 @@ public class ImagePanel1 extends JPanel
     ArrayList<Integer> positionyList = new ArrayList<Integer>();
     Color randomColor;
     ImageIcon rings = new ImageIcon("rings1.png");
+    ImageIcon rings2 = new ImageIcon("rings2.png");
+    ImageIcon rings3 = new ImageIcon("rings3.png");
     boolean ring = false;
     int moons = 0;
     int mass = 230;
+    int xposition = 300;
+    int yposition = 80;
     
     public void addColor(int bluecolor, int greencolor, int redcolor){
         int blue = (int)(bluecolor);
@@ -27,7 +31,21 @@ public class ImagePanel1 extends JPanel
             ring = false;
         }
     }
-    
+    public void chooseMass(double size){
+        if(size == 0.33){
+            mass = 100;
+            xposition = 350;
+            yposition = 150;
+        }else if(size == 5.97){
+            mass = 230;
+            xposition = 300;
+            yposition = 80;
+        }else if(size == 568){
+            mass = 340;
+            xposition = 250;
+            yposition = 10;
+        }
+    }
     public void addMoons(int amount){
         if(amount == 0){
             moons = 0;
@@ -49,12 +67,19 @@ public class ImagePanel1 extends JPanel
     @Override 
     public void paintComponent(Graphics g){
         //g.fillRect(0,0, 400, 400);
-        
         g.setColor(randomColor);
-        g.fillOval(300, 80, 230, 230);
+        g.fillOval(xposition,yposition, mass, mass);
         if(ring == true){
-            Image image = rings.getImage();
-            g.drawImage(image, 100, 140, this);
+            if(mass == 100){
+                Image image = rings2.getImage();
+                g.drawImage(image, 250, 180, this);
+            }else if(mass == 230){
+                Image image = rings.getImage();
+                g.drawImage(image, 100, 140, this);
+            }else if(mass == 340){
+                Image image = rings3.getImage();
+                g.drawImage(image, -15, 140, this);
+            }
         }
         
         for(int i = 0; i < moons; i++){
